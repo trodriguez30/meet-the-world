@@ -3,7 +3,6 @@ import services from "./services";
 import actions from "./actions";
 
 function* getAllCountriesAxios() {
-  console.log("here");
   try {
     const response = yield call(services.fetchAllCountries);
     if (response.status === 200) {
@@ -14,7 +13,6 @@ function* getAllCountriesAxios() {
       });
     }
   } catch (err) {
-    console.log(err);
     yield put({ type: actions.SEND_SHOPPING_CART_FAILED });
   }
 }
@@ -22,7 +20,6 @@ function* getAllCountriesAxios() {
 function* getFilteredCountriesAxios({ payload }) {
   try {
     const response = yield call(services.fetchFilteredCountries, payload);
-    console.log(response);
     if (response) {
       const { data } = response;
       yield put({
