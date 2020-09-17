@@ -40,7 +40,6 @@ function CountryDetails(props) {
         justify="space-around"
         align="middle"
         gutter={[16, 16]}
-        style={{ height: "100%" }}
       >
         <Item label="Top level domain">{country.topLevelDomain[0]}</Item>
         <Item label="Alpha code">{country.alpha3Code}</Item>

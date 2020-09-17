@@ -1,0 +1,39 @@
+.container {
+  background-color: white;
+
+  &__header {
+    height: 100px;
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    &Logo {
+      width: 200px;
+      margin: 16px 24px 16px 0;
+      float: left;
+    }
+  }
+
+  &__countries {
+    margin: 24px 16px 24px;
+  }
+
+  &__footer {
+    background-color: #26272b;
+    color: #96a2b2;
+
+    &--icons {
+      padding-left: 0;
+      margin-bottom: 0;
+      list-style: none;
+      display: flex;
+      justify-content: space-evenly;
+
+      li {
+        display: inline-block;
+      }
+    }
+  }
+}

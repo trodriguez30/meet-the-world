@@ -86,6 +86,7 @@ export default function(props) {
             style={{ width: "100%" }}
             disabled={!filter}
             value={valueInput}
+            type={filter === "callingCodes" ? "number" : "text"}
             placeholder="input search text"
             enterButton="Search"
             onChange={handleChange}
