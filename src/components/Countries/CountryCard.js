@@ -1,9 +1,12 @@
 import { List, Card, Button, Typography, Modal } from "antd";
-import { InfoCircleOutlined } from "@ant-design/icons";
+import { EyeOutlined } from "@ant-design/icons";
 
 import React, { useState } from "react";
 
 import CountryDetails from "./CountryDetails";
+
+import "./styles.scss";
+
 const { Meta } = Card;
 const { Title } = Typography;
 
@@ -26,6 +29,7 @@ export default function CountryCard({ country }) {
     <>
       <List.Item>
         <Card
+          className="CountryCard"
           hoverable
           cover={
             <img
@@ -37,11 +41,14 @@ export default function CountryCard({ country }) {
           actions={[
             <Button
               type="link"
+              style={{
+                color: "#26272b"
+              }}
               block
-              icon={<InfoCircleOutlined />}
+              icon={<EyeOutlined />}
               onClick={showModal}
             >
-              Search
+              Read more
             </Button>
           ]}
         >
@@ -56,7 +63,11 @@ export default function CountryCard({ country }) {
         </Card>
       </List.Item>
       <Modal
-        title="Country Details"
+        title={
+          <Title level={4} strong>
+            {`${country.name} - ${country.nativeName}`}
+          </Title>
+        }
         visible={visible}
         onOk={handleOk}
         width={900}

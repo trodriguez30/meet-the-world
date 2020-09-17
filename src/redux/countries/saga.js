@@ -17,27 +17,8 @@ function* getAllCountriesAxios() {
   }
 }
 
-function* getFilteredCountriesAxios({ payload }) {
-  try {
-    const response = yield call(services.fetchFilteredCountries, payload);
-    if (response) {
-      const { data } = response;
-      yield put({
-        type: actions.FETCH_FILTERED_COUNTRIES_SUCCEEDED,
-        countries: data
-      });
-    }
-  } catch (err) {
-    yield put({ type: actions.FETCH_FILTERED_COUNTRIES_FAILED });
-  }
-}
-
 export default function* rootSaga() {
   yield all([
-    takeLatest(actions.FETCH_ALL_COUNTRIES_PENDING, getAllCountriesAxios),
-    takeLatest(
-      actions.FETCH_FILTERED_COUNTRIES_PENDING,
-      getFilteredCountriesAxios
-    )
+    takeLatest(actions.FETCH_ALL_COUNTRIES_PENDING, getAllCountriesAxios)
   ]);
 }

@@ -8,15 +8,6 @@ const services = {
     };
     console.log(opts);
     return axios(opts);
-  },
-
-  fetchFilteredCountries: payload => {
-    console.log(payload);
-    const opts = {
-      method: "GET",
-      url: "https://restcountries.eu/rest/v2/all"
-    };
-    return axios(opts);
   }
 };
 

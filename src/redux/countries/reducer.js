@@ -29,27 +29,7 @@ export default function CountriesReducer(state = initialState, action) {
         fetchContriesError: true,
         countries: []
       };
-    case actions.FETCH_FILTERED_COUNTRIES_PENDING:
-      return {
-        ...state,
-        fetchingCountries: true,
-        fetchContriesError: false,
-        countries: []
-      };
-    case actions.FETCH_FILTERED_COUNTRIES_SUCCEEDED:
-      return {
-        ...state,
-        fetchingCountries: false,
-        fetchContriesError: false,
-        countries: action.countries
-      };
-    case actions.FETCH_FILTERED_COUNTRIES_FAILED:
-      return {
-        ...state,
-        fetchingCountries: false,
-        fetchContriesError: true,
-        countries: []
-      };
+
     default:
       return state;
   }
