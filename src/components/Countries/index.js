@@ -12,7 +12,7 @@ import "./styles.scss";
 
 const { Header, Footer, Content } = Layout;
 
-const { getAllCountries, getFilteredCountries } = actions;
+const { getAllCountries } = actions;
 
 export default function() {
   const dispatch = useDispatch();
@@ -42,7 +42,7 @@ export default function() {
   return (
     <Layout className="container">
       <Header className="container__header">
-        <img src={logo} alt="logo" className="header__logo" />
+        <img src={logo} alt="logo" className="container__headerLogo" />
       </Header>
       <Content className="container__countries">
         <List

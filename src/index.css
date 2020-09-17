@@ -12,6 +12,6 @@
   display: flex;
   min-height: 100vh;
   margin: 0;
-  padding: ;
+  padding: 0;
   flex-direction: column;
 }
