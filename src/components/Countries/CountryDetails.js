@@ -6,7 +6,7 @@ import actions from "../../redux/countries/actions";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-const { Text, Title } = Typography;
+const { Title } = Typography;
 
 const { getCountryDetails } = actions;
 
