@@ -1,5 +1,5 @@
 import { List, Card, Button, Typography, Modal } from "antd";
-import { EyeOutlined } from "@ant-design/icons";
+import { EyeOutlined, GlobalOutlined } from "@ant-design/icons";
 
 import React, { useState } from "react";
 
@@ -9,6 +9,13 @@ import "./styles.scss";
 
 const { Meta } = Card;
 const { Title } = Typography;
+
+const DescriptionItems = props => (
+  <li className="CountryCard__items">
+    <GlobalOutlined style={{ marginRight: 16, color: "#26272b" }} />
+    {props.children}
+  </li>
+);
 
 export default function CountryCard({ country }) {
   const [visible, setVisible] = useState(false);
@@ -41,9 +48,7 @@ export default function CountryCard({ country }) {
           actions={[
             <Button
               type="link"
-              style={{
-                color: "#26272b"
-              }}
+              className="CountryCard__actions"
               block
               icon={<EyeOutlined />}
               onClick={showModal}
@@ -58,7 +63,42 @@ export default function CountryCard({ country }) {
                 {country.name}
               </Title>
             }
-            description="term"
+            description={
+              <ul>
+                <DescriptionItems>
+                  Capital:{" "}
+                  <span className="CountryCard__items--info">
+                    {country.capital}{" "}
+                  </span>
+                </DescriptionItems>
+                <DescriptionItems>
+                  Continent:{" "}
+                  <span className="CountryCard__items--info">
+                    {country.region}{" "}
+                  </span>
+                </DescriptionItems>
+                <DescriptionItems>
+                  Currencies:{" "}
+                  <ul className="CountryCard__items--info">
+                    {country.currencies.map((cr, i) => (
+                      <li key={i} className="CountryCard__items--list">
+                        {cr.code}
+                      </li>
+                    ))}
+                  </ul>
+                </DescriptionItems>
+                <DescriptionItems>
+                  Languages:{" "}
+                  <ul className="CountryCard__items--info">
+                    {country.languages.map((cr, i) => (
+                      <li key={i} className="CountryCard__items--list">
+                        {cr["iso639_1"]}
+                      </li>
+                    ))}
+                  </ul>
+                </DescriptionItems>
+              </ul>
+            }
           />
         </Card>
       </List.Item>

@@ -1,0 +1,13 @@
+$primary-color: #26272b;
+$second-color: #96a2b2;
+
+.collapse {
+  background-color: $primary-color;
+
+  &__title {
+    color: $second-color;
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+  }
+}

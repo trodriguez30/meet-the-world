@@ -13,7 +13,7 @@ import actions from "./redux/countries/actions";
 import CountriesList from "./components/Countries/";
 import Filter from "./components/Filter/";
 import Loader from "./components/Utilities/Loader";
-import logo from "./assets/Logo-horizontal.jpg";
+import logo from "./assets/Logo.png";
 
 import "./countries.scss";
 

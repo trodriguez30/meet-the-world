@@ -1,16 +1,22 @@
+$primary-color: #26272b;
+$second-color: #96a2b2;
+$background-color: #fff;
+
 .container {
-  background-color: white;
+  background-color: $background-color;
 
   &__header {
     height: 100px;
-    background-color: white;
+    background-color: $primary-color;
+    color: $second-color;
+
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
 
     &Logo {
-      width: 200px;
+      width: 70px;
       margin: 16px 24px 16px 0;
       float: left;
     }
@@ -21,8 +27,8 @@
   }
 
   &__footer {
-    background-color: #26272b;
-    color: #96a2b2;
+    background-color: $primary-color;
+    color: $second-color;
 
     &--icons {
       padding-left: 0;

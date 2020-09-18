@@ -19,8 +19,8 @@ const mapStyles = {
 //Country details component
 const Item = props => (
   <Col span={props.row ? 24 : 12}>
-    <Title level={5} style={{ color: "#40A9FF" }}>
-      <GlobalOutlined style={{ marginRight: 16, color: "#40A9FF" }} />
+    <Title level={5} style={{ color: "#26272b", fontWeight: "bold" }}>
+      <GlobalOutlined style={{ marginRight: 16, color: "#26272b" }} />
       {props.label}:
     </Title>
 
@@ -65,8 +65,8 @@ function CountryDetails(props) {
   }
 
   return (
-    <Layout className="CountryDetailsContainer">
-      <Row justify="space-around" align="middle" gutter={[16, 16]}>
+    <Layout className="DetailsContainer">
+      <Row justify="space-around" align="middle" className="DetailsContainer__row" gutter={[16, 16]}>
         <Item label="Top level domain">{country.topLevelDomain[0]}</Item>
         <Item label="Alpha code">{country.alpha3Code}</Item>
         <Item label="Subregion">{country.subregion}</Item>
