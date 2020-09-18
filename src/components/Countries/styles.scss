@@ -10,6 +10,7 @@ $second-color: #96a2b2;
   &__row {
     display: flex;
     flex: 1;
+    color: $second-color;
   }
 }
 
@@ -32,9 +33,11 @@ $second-color: #96a2b2;
   &__items {
     color: $primary-color;
     margin-bottom: 8px;
+    font-weight: 600;
 
     &--info {
       color: $second-color;
+      font-weight: normal;
     }
 
     &--list {
@@ -46,4 +49,5 @@ $second-color: #96a2b2;
 
 .itemDescription {
   margin-left: 30px;
+  color: $second-color;
 }

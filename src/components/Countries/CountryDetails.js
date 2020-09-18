@@ -1,6 +1,6 @@
 import { Layout, Typography, Row, Col, Skeleton, Empty } from "antd";
 import { Map, GoogleApiWrapper, Marker } from "google-maps-react";
-import { GlobalOutlined } from "@ant-design/icons";
+import { EnvironmentOutlined } from "@ant-design/icons";
 import actions from "../../redux/countries/actions";
 
 import React, { useEffect } from "react";
@@ -20,13 +20,12 @@ const mapStyles = {
 const Item = props => (
   <Col span={props.row ? 24 : 12}>
     <Title level={5} style={{ color: "#26272b", fontWeight: "bold" }}>
-      <GlobalOutlined style={{ marginRight: 16, color: "#26272b" }} />
+      <EnvironmentOutlined style={{ marginRight: 16, color: "#26272b" }} />
       {props.label}:
     </Title>
-
     {typeof props.children !== "object" ? (
       <div className="itemDescription">
-        <Text>{props.children}</Text>
+        <p>{props.children}</p>
       </div>
     ) : (
       props.children
@@ -66,7 +65,12 @@ function CountryDetails(props) {
 
   return (
     <Layout className="DetailsContainer">
-      <Row justify="space-around" align="middle" className="DetailsContainer__row" gutter={[16, 16]}>
+      <Row
+        justify="space-around"
+        align="middle"
+        className="DetailsContainer__row"
+        gutter={[16, 16]}
+      >
         <Item label="Top level domain">{country.topLevelDomain[0]}</Item>
         <Item label="Alpha code">{country.alpha3Code}</Item>
         <Item label="Subregion">{country.subregion}</Item>

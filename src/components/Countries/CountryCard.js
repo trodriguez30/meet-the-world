@@ -1,5 +1,5 @@
 import { List, Card, Button, Typography, Modal } from "antd";
-import { EyeOutlined, GlobalOutlined } from "@ant-design/icons";
+import { EyeOutlined, PushpinFilled } from "@ant-design/icons";
 
 import React, { useState } from "react";
 
@@ -12,7 +12,7 @@ const { Title } = Typography;
 
 const DescriptionItems = props => (
   <li className="CountryCard__items">
-    <GlobalOutlined style={{ marginRight: 16, color: "#26272b" }} />
+    <PushpinFilled style={{ marginRight: 16, color: "#96a2b2" }}/>
     {props.children}
   </li>
 );
@@ -42,7 +42,7 @@ export default function CountryCard({ country }) {
             <img
               alt={`flag-${country.name}`}
               src={country.flag}
-              style={{ height: "150px" }}
+              style={{ height: "150px", width: '100%'}}
             />
           }
           actions={[
