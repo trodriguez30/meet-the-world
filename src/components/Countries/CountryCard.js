@@ -65,7 +65,7 @@ export default function CountryCard({ country }) {
       <Modal
         title={
           <Title level={4} strong>
-            {`${country.name} - ${country.nativeName}`}
+            {country.name}
           </Title>
         }
         visible={visible}
