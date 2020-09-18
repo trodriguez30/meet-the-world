@@ -1,10 +1,14 @@
-import { Layout, Typography, Row, Col } from "antd";
+import { Layout, Typography, Row, Col, Skeleton, Empty } from "antd";
 import { Map, GoogleApiWrapper, Marker } from "google-maps-react";
 import { GlobalOutlined } from "@ant-design/icons";
+import actions from "../../redux/countries/actions";
 
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 const { Text, Title } = Typography;
+
+const { getCountryDetails } = actions;
 
 const mapStyles = {
   display: "flex",
@@ -32,15 +36,37 @@ const Item = props => (
 
 //Modal Content
 function CountryDetails(props) {
-  const { country } = props;
+  const { countryName } = props;
+
+  const dispatch = useDispatch();
+
+  const fetchingCountryDetails = useSelector(
+    state => state.Countries.fetchingCountryDetails
+  );
+  const country = useSelector(state => state.Countries.countryDetails);
+
+  const fetchContryDetailsError = useSelector(
+    state => state.Countries.fetchContryDetailsError
+  );
+
+  useEffect(() => {
+    dispatch(getCountryDetails({ name: countryName }));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  //Handling state while API responds
+  if (fetchingCountryDetails) {
+    return <Skeleton active />;
+  }
+
+  //handling state if API returns error
+  if (fetchContryDetailsError) {
+    return <Empty />;
+  }
 
   return (
     <Layout className="CountryDetailsContainer">
-      <Row
-        justify="space-around"
-        align="middle"
-        gutter={[16, 16]}
-      >
+      <Row justify="space-around" align="middle" gutter={[16, 16]}>
         <Item label="Top level domain">{country.topLevelDomain[0]}</Item>
         <Item label="Alpha code">{country.alpha3Code}</Item>
         <Item label="Subregion">{country.subregion}</Item>

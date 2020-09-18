@@ -1,5 +1,5 @@
 import { Layout, Row, Col } from "antd";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import {
@@ -23,42 +23,16 @@ const { getAllCountries } = actions;
 
 export default function() {
   const dispatch = useDispatch();
-  const [countries, setCountries] = useState([]);
 
   const fetchingCountries = useSelector(
     state => state.Countries.fetchingCountries
   );
   const countriesData = useSelector(state => state.Countries.countries);
 
-  const fetchContriesError = useSelector(
-    state => state.Countries.fetchContriesError
-  );
-
   useEffect(() => {
     dispatch(getAllCountries());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  useEffect(() => {
-    if (countriesData) {
-      setCountries(countriesData);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [countriesData]);
-
-  const updateCountries = data => {
-    setCountries(data);
-  };
-
-  //Handling state while API responds
-  if (fetchingCountries) {
-    return <Loader />;
-  }
-
-  //handling state if API returns error
-  if (fetchContriesError) {
-    return <>Error</>;
-  }
 
   //Show list of countries
   return (
@@ -67,8 +41,13 @@ export default function() {
         <img src={logo} alt="logo" className="container__headerLogo" />
       </Header>
       <Content className="container__countries">
-        <Filter data={countriesData} updateData={updateCountries} />
-        <CountriesList countries={countries} />
+        <Filter />
+        {//Handling state while API responds
+        fetchingCountries ? (
+          <Loader />
+        ) : (
+          <CountriesList countries={countriesData} />
+        )}
       </Content>
       <Footer className="container__footer">
         <Row>

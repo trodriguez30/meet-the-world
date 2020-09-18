@@ -75,7 +75,7 @@ export default function CountryCard({ country }) {
         onCancel={handleCancel}
         style={{ top: "5vh" }}
       >
-        <CountryDetails country={country} />
+        <CountryDetails countryName={country.name} />
       </Modal>
     </>
   );
